@@ -41,6 +41,7 @@ class Modbus_Driver(object):
             modbus_section = 'modbus'
         else:
             modbus_section = config_section
+        print(modbusConfig[modbus_section])
 
         self.BYTE_ORDER_DICT = {}
         self.WORD_ORDER_DICT = {}
