@@ -28,14 +28,16 @@ import logging
 class Modbus_Driver(object):
     def __init__(self, config_file, config_section=None, **kwargs):
         # Use a config section if the config file is being shared with other
-        # parts of a project. **kwargs can contain a variable amount of config
-        if (config_section==None):
-            modbus_section = 'modbus'
-        else:
-            modbus_section = config_section
-        with open(config_file) as f:
-            # use safe_load instead load for security reasons
-            modbusConfig = yaml.safe_load(f)
+        # parts of a project. **kwargs can contain a variable amount of
+        if (isinstance(config_file,str)):
+            if (config_section==None):
+                modbus_section = 'modbus'
+            else:
+                modbus_section = config_section
+            with open(config_file) as f:
+                # use safe_load instead load for security reasons
+                modbusConfig = yaml.safe_load(f)
+
 
         self.BYTE_ORDER_DICT = {}
         self.WORD_ORDER_DICT = {}
