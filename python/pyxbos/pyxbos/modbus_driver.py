@@ -30,14 +30,17 @@ class Modbus_Driver(object):
         # Use a config section if the config file is being shared with other
         # parts of a project. **kwargs can contain a variable amount of
         if (isinstance(config_file,str)):
-            if (config_section==None):
-                modbus_section = 'modbus'
-            else:
-                modbus_section = config_section
+
             with open(config_file) as f:
                 # use safe_load instead load for security reasons
                 modbusConfig = yaml.safe_load(f)
+        else:
+            modbusConfig = config_file
 
+        if (config_section==None):
+            modbus_section = 'modbus'
+        else:
+            modbus_section = config_section
 
         self.BYTE_ORDER_DICT = {}
         self.WORD_ORDER_DICT = {}
