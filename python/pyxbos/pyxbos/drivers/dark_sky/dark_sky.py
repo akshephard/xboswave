@@ -94,7 +94,7 @@ if __name__ == '__main__':
         # use safe_load instead load for security reasons
         driverConfig = yaml.safe_load(f)
 
-    api_key = driverConfig['dark_sky']['api']
+    api_key = driverConfig['dark_sky']['api_key']
     namespace = driverConfig['wavemq']['namespace']
 
     cfg = {
